@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
   has_many :comments
-  validates_presence_of :body
+
+
+  def title
+  end
 end
