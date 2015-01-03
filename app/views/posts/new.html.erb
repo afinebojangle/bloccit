@@ -11,19 +11,6 @@
   </div>
   
   <div class="col-md-8">
-    <%= form_for [@topic, @post] do |f| %>
-      <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </div>
-    <div class="form-group">
-      <%= f.label :body %>
-      <%= f.text_field :body%>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Save" %>
-    </div>
-    
-    <% end %>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
 </div>
