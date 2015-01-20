@@ -1,0 +1,9 @@
+<%= form_for [@topic, @post, @post.comments.new] do |f| %>
+  <div class="form-group">
+    <%= f.label :body, "Enter Comment:" %>
+    <%= f.text_area :body, rows: 1, class: 'form-control', placeholder: "Enter comment" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "save", class: 'btn btn-success' %>
+  </div>
+<% end %>
