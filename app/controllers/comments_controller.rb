@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(params.require(:comment).permit(:body))
     if @comment.save
        flash[:notice] = "comment was saved."
-      redirect_to topic_post_path
+      redirect_to topic_post_path(@topic, @post)
      else
       flash[:error] = "There was an error saving the comment. Please try again."
      end
@@ -18,10 +18,10 @@ class CommentsController < ApplicationController
      authorize @comment
      if @comment.destroy
        flash[:notice] = "Comment was removed."
-       redirect_to topic_post_path
+       redirect_to topic_post_path(@topic, @post)
      else
        flash[:error] = "Comment couldn't be deleted. Try again."
-       redirect_to topic_post_path
+       redirect_to topic_post_path(@topic, @post)
      end
    end
 end
