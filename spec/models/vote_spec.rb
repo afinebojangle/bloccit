@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Vote do
   
   include TestFactories
-  include Devise::TestHelpers
+  
   
   describe "validations" do
     describe "value validation" do
