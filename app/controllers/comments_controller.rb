@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @topic = @post.topic
     @comment = current_user.comments.build(params.require(:comment).permit(:body))
+    @comment.post = @post
     if @comment.save
        flash[:notice] = "comment was saved."
       redirect_to topic_post_path(@topic, @post)
