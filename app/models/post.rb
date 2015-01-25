@@ -8,8 +8,8 @@ class Post < ActiveRecord::Base
   
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
-  #validates :topic, presence: true
-  #validates :user, presence: true
+  validates :topic, presence: true
+  validates :user, presence: true
   
   mount_uploader :image, ImageUploader
   
@@ -32,12 +32,8 @@ class Post < ActiveRecord::Base
     update_attribute(:rank, new_rank)
   end
   
-  after_create :create_vote
-  
-  private
-  
   def create_vote
-    user.votes.create(post: self.post, value: 1)
+    user.votes.create(post: self, value: 1)
   end
 
 end
