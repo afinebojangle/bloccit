@@ -55,6 +55,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
+gem 'newrelic_rpm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -67,5 +68,4 @@ gem 'will_paginate', '~> 3.0.5'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'byebug'
 
