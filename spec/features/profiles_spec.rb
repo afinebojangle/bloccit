@@ -2,13 +2,12 @@ require 'rails_helper'
  
  describe "Visiting profiles" do
  
-   include TestFactories
    include Warden::Test::Helpers
    Warden.test_mode!
  
    before do 
-     @user = authenticated_user
-       @post = associated_post(user: @user)
+     @user = create(:user)
+       @post = create(:post, user: @user)
        @comment = Comment.new(user: @user, body: "A Comment")
        allow(@comment).to receive(:send_favorite_emails)
        @comment.save
