@@ -5,14 +5,18 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @topic = @post.topic
-    @comment = current_user.comments.build(params.require(:comment).permit(:body))
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
+    @new_comment = Comment.new
     if @comment.save
-       flash[:notice] = "comment was saved."
-      redirect_to topic_post_path(@topic, @post)
-     else
-      flash[:error] = "There was an error saving the comment. Please try again."
-     end
+      flash[:notice] = "comment was saved."
+    else
+     flash[:error] = "There was an error saving the comment. Please try again."
+    end
+    
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@post.topic, @post] }
+    end
   end
   
   def destroy
@@ -30,4 +34,10 @@ class CommentsController < ApplicationController
        format.html { redirect_to [@post.topic, @post] }
      end
    end
+  
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end

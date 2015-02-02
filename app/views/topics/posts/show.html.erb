@@ -31,9 +31,13 @@
 
 <div class ="col-md-8">
   <h3>Comments</h3>
-  <%= render partial: 'comments/comment', collection: @comments %>
-  <% if user_signed_in? %>
-    <%= render "comments/form" %>
-  <% end %>
+  <div class='js-comments'>
+    <%= render partial: 'comments/comment', collection: @comments %>
+  </div>
+  <div class='new-comment'>
+    <% if user_signed_in? %>
+      <%= render "comments/form" %>
+    <% end %>
+  </div>
 </div>
   
